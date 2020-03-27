@@ -183,6 +183,18 @@
             price = price - option.price;
             /* END ELSE IF: if option is not selected and option is default */
           }
+          const optionsImg = thisProduct.imageWrapper.querySelectorAll(
+            `.${paramId}-${optionId}`
+          );
+          if (optionSelected) {
+            for (let image of optionsImg) {
+              image.classList.add(classNames.menuProduct.imageVisible);
+            }
+          } else {
+            for (let image of optionsImg) {
+              image.classList.remove(classNames.menuProduct.imageVisible);
+            }
+          }
           /* END LOOP: for each optionId in param.options */
         }
         /* END LOOP: for each paramId in thisProduct.data.params */
