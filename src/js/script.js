@@ -110,29 +110,20 @@
       const thisProduct = this;
 
       /* find the clickable trigger (the element that should react to clicking) */
-      /*
-      const clickableTrigger = document.querySelector(
-        select.menuProduct.clickable
-      );
-      */
-
-      //console.log(clickableTrigger);
       /* START: click event listener to trigger */
       thisProduct.accordionTrigger.addEventListener('click', function(event) {
-        console.log(thisProduct.accordionTrigger);
         /* prevent default action for event */
         event.preventDefault();
         /* toggle active class on element of thisProduct */
         thisProduct.element.classList.add(classNames.menuProduct.wrapperActive);
-        console.log(thisProduct.element.classList);
         /* find all active products */
-        const activeProducts = document.querySelector(select.menuProduct.form);
-        console.log(activeProducts);
+        const activeProducts = document.querySelectorAll(
+          select.all.menuProductsActive
+        );
         /* START LOOP: for each active product */
         for (let activeProduct of activeProducts) {
           /* START: if the active product isn't the element of thisProduct */
-          if (activeProduct !== thisProduct.element);
-          {
+          if (activeProduct !== thisProduct.element) {
             /* remove class active for the active product */
             activeProduct.classList.remove(
               classNames.menuProduct.wrapperActive
