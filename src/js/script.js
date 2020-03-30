@@ -119,7 +119,9 @@
         /* prevent default action for event */
         event.preventDefault();
         /* toggle active class on element of thisProduct */
-        thisProduct.element.classList.add(classNames.menuProduct.wrapperActive);
+        thisProduct.element.classList.toggle(
+          classNames.menuProduct.wrapperActive
+        );
         /* find all active products */
         const activeProducts = document.querySelectorAll(
           select.all.menuProductsActive
@@ -127,7 +129,7 @@
         /* START LOOP: for each active product */
         for (let activeProduct of activeProducts) {
           /* START: if the active product isn't the element of thisProduct */
-          if (activeProduct !== thisProduct.element) {
+          if (activeProduct != thisProduct.element) {
             /* remove class active for the active product */
             activeProduct.classList.remove(
               classNames.menuProduct.wrapperActive
@@ -179,12 +181,12 @@
           /* START IF: if option is selected and option is not default */
           if (optionSelected && !option.default) {
             /* add price of option to variable price */
-            price = price + option.price;
+            price += option.price;
             /* END IF: if option is selected and option is not default */
             /* START ELSE IF: if option is not selected and option is default */
           } else if (!optionSelected && option.default) {
             /* deduct price of option from price */
-            price = price - option.price;
+            price -= option.price;
             /* END ELSE IF: if option is not selected and option is default */
           }
           const optionImg = thisProduct.imageWrapper.querySelectorAll(
