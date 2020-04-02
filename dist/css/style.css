@@ -450,7 +450,8 @@ input.error, select.error {
   padding: 12px 0 0 0;
 }
 
-.cart__order-confirmation input, .cart__order-confirmation button {
+.cart__order-confirmation input,
+.cart__order-confirmation button {
   width: 100%;
   margin-bottom: 6px;
 }
