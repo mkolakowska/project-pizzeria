@@ -1,0 +1,128 @@
+.home-menu-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  .home-menu-item {
+    border-radius: 5px;
+    background-color: $color-main;
+    flex: 1 0 45%;
+    margin: 2px;
+    height: 120px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    a {
+      color: $color-light;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    h3 {
+      font-family: $font-header;
+      font-weight: $font-normal;
+      text-transform: uppercase;
+    }
+
+    &:nth-child(1) {
+      background-image: url('../../images/assets/pizza-1.jpg');
+
+      h3 {
+        transition: all 0.4s;
+
+        &:hover {
+          margin: 18px 0;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      background-image: url('../../images/assets/pizza-2.jpg');
+
+      h3 {
+        transition: all 0.4s;
+
+        &:hover {
+          margin: 18px 0;
+        }
+      }
+    }
+  }
+}
+
+.home-carousel-wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  .home-carousel-image img {
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    margin-right: 20px;
+  }
+
+  .home-carousel-opinion {
+    .slide {
+      display: none;
+    }
+  }
+
+  .home-carousel-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.home-gallery-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .home-gallery-item {
+    position: relative;
+    flex: 0 0 31%;
+    max-width: 30%;
+    height: 170px;
+    margin: 6px;
+
+    &::before {
+      position: absolute;
+      display: none;
+      content: '';
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      opacity: 1;
+    }
+
+    &:hover:before,
+    &:hover figcaption {
+      display: block;
+      transition: 0.4s;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    figcaption {
+      position: absolute;
+      display: none;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $color-light;
+
+      i:hover {
+        color: $color-main;
+        cursor: pointer;
+      }
+    }
+  }
+}
