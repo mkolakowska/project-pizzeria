@@ -1,4 +1,13 @@
+body {
+  &:not(.order) {
+    .cart {
+      display: none;
+    }
+  }
+}
+
 .cart {
+  display: block;
   position: absolute;
   width: 300px; // CODE CHANGED
   right: 0;

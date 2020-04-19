@@ -17,7 +17,7 @@
 }
 
 .booking-wrapper {
-  margin: ($base-size * 3.5) auto;
+  margin: ($base-size * 20) auto;
   padding: ($base-size * 6) ($base-size * 4);
   background: $color-light;
   border-bottom: 1px solid lighten($color-dark, 70%);
@@ -80,7 +80,7 @@
   }
 
   &__fill {
-    background: $color-success;
+    background: transparent;
     transition-timing-function: cubic-bezier(0, 1, 0, 1);
     transition: width 100ms;
     box-shadow: none;

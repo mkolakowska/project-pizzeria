@@ -6,34 +6,45 @@ import Booking from './components/Booking.js';
 const app = {
   initPages: function () {
     const thisApp = this;
+    thisApp.pages = Array.from(
+      document.querySelector(select.containerOf.pages).children
+    );
+    console.log(thisApp.pages);
+    thisApp.navLinks = Array.from(document.querySelectorAll(select.nav.links));
+    thisApp.imageBoxes = Array.from(document.querySelectorAll('.navi a'));
 
-    thisApp.pages = document.querySelector(select.containerOf.pages).children;
-    thisApp.navLinks = document.querySelectorAll(select.nav.links);
-    const idFromHash = window.location.hash.replace('#/', '');
+    let pagesMatchingHash = [];
+    if (window.location.hash.length > 2) {
+      const idFromHash = window.location.hash.replace('#/', '');
 
-    let pageMatchingHash = thisApp.pages[0].id;
-
-    for (let page of thisApp.pages) {
-      if (page.id == idFromHash) {
-        pageMatchingHash = page.id;
-        break;
-      }
+      pagesMatchingHash = thisApp.pages.filter(function (page) {
+        return page.id == idFromHash;
+      });
     }
 
-    thisApp.activatePage(pageMatchingHash);
+    thisApp.activatePage(
+      pagesMatchingHash.length ? pagesMatchingHash[0].id : thisApp.pages[0].id
+    );
 
     for (let link of thisApp.navLinks) {
       link.addEventListener('click', function (event) {
         const clickedElement = this;
         event.preventDefault();
 
-        /* get page id from href attribute */
-        const id = clickedElement.getAttribute('href').replace('#', '');
-        /* run thisApp.activePage with that id */
-        thisApp.activatePage(id);
+        /* TODO: get page id from href*/
+        const pageId = clickedElement.getAttribute('href');
+        const href = pageId.replace('#', '');
+        /* TODO activate page*/
+        thisApp.activatePage(href);
+      });
+    }
 
-        /* change URL hash */
-        window.location.hash = `#/${id}`;
+    for (let box of thisApp.imageBoxes) {
+      box.addEventListener('click', function (event) {
+        const clickedElement = this;
+        event.preventDefault();
+        const id = clickedElement.getAttribute('href').replace('#', '');
+        thisApp.activatePage(id);
       });
     }
   },
@@ -41,17 +52,20 @@ const app = {
   activatePage: function (pageId) {
     const thisApp = this;
 
-    /* add class "active" to matching pages, remove from non-matching */
-    for (let page of thisApp.pages) {
-      page.classList.toggle(classNames.pages.active, page.id == pageId);
-    }
-    /* add class "active" to matching links, remove from non-matching */
     for (let link of thisApp.navLinks) {
       link.classList.toggle(
         classNames.nav.active,
-        link.getAttribute('href') == `#${pageId}`
+        link.getAttribute('href') == '#' + pageId
       );
     }
+    for (let page of thisApp.pages) {
+      page.classList.toggle(
+        classNames.nav.active,
+        page.getAttribute('id') == pageId
+      );
+    }
+    window.location.hash = '#/' + pageId;
+    document.body.classList = pageId;
   },
 
   initBooking: function () {
@@ -107,6 +121,41 @@ const app = {
     });
   },
 
+  initCarousel: function () {
+    /* global Flickity */
+    const thisApp = this;
+    thisApp.initCarousel = new Flickity('.main-carousel', {
+      // options
+      //cellAlign: 'right',
+      contain: true,
+      autoPlay: true,
+      prevNextButtons: false,
+    });
+  },
+  /*
+  initCarousel: function () {
+    const thisApp = this;
+    let slideIndex = 0;
+    const carouselSlide = document.querySelectorAll(
+      '.home-carousel-wrapper .slide'
+    );
+    console.log(carouselSlide);
+    let i;
+
+    for (i = 0; i < carouselSlide.length; i++) {
+      carouselSlide[i].style.display = 'none';
+      console.log(carouselSlide[i]);
+    }
+    slideIndex++;
+    if (slideIndex > carouselSlide.length) {
+      slideIndex = 1;
+      console.log(slideIndex);
+    }
+    carouselSlide[slideIndex - 1].style.display = 'block';
+    setTimeout(thisApp.initCarousel, 3000);
+    console.log(thisApp.initCarousel);
+  },
+*/
   init: function () {
     const thisApp = this;
     //// console.log('*** App starting ***');
@@ -118,6 +167,7 @@ const app = {
     thisApp.initCart();
     thisApp.initData();
     thisApp.initBooking();
+    thisApp.initCarousel();
   },
 };
 app.init();

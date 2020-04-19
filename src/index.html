@@ -22,6 +22,7 @@
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
     <link rel="stylesheet" href="vendor/range-slider.min.css" />
+    <link rel="stylesheet" href="vendor/flickity.min.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -29,7 +30,9 @@
       <div class="container">
         <div class="header__wrapper">
           <div class="logo">
-            <h1 class="logo__title"><span>Mamma</span>Mia!</h1>
+            <a href="/" class="logo_title"
+              ><h1 class="logo__title"><span>Mamma</span>Mia!</h1></a
+            >
             <h2 class="logo__subtitle">the best homemade Italian food</h2>
           </div>
           <div class="main-nav">
@@ -89,15 +92,15 @@
 
     <div id="pages">
       <section id="home">
-        <div class="container">
+        <div class="home-wrapper container">
           <div class="home-menu-wrapper">
-            <div class="home-menu-item">
+            <div class="home-menu-item navi active">
               <a href="#order">
                 <h3>Order online</h3>
                 <p>Delicious food delivered to your door</p>
               </a>
             </div>
-            <div class="home-menu-item">
+            <div class="home-menu-item navi">
               <a href="#booking">
                 <h3>Book a table</h3>
                 <p>Order a table and eat at our restaurant</p>
@@ -110,51 +113,44 @@
               </a>
             </div>
           </div>
-          <div class="home-carousel-wrapper">
-            <div class="home-carousel-image">
-              <img src="./images/assets/pizza-3.jpg" alt="" />
-            </div>
-            <div class="home-carousel-opinion">
-              <div class="opinion first active">
-                <div class="slide">
+
+          <div class="carousel">
+            <div class="home-carousel-wrapper">
+              <div class="home-carousel-image">
+                <img src="./images/assets/pizza-3.jpg" alt="" />
+              </div>
+              <div class="main-carousel">
+                <div class="carousel-cell">
                   <h4>Amazing service!</h4>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eaque id recusandae voluptates, saepe doloremque similique
-                    odio maxime quod totam incidunt asperiores vitae repudiandae
-                    consequatur, hic quasi culpa! Rerum, velit sunt.
+                    Iure rem magnam neque. Dolorem eius nihil autem ex dolores
+                    modi est.
                   </p>
+                  <p class="author">- Margaret Osborne</p>
                 </div>
-              </div>
-              <div class="opinion second">
-                <div class="slide">
+                <div class="carousel-cell">
                   <h4>Not neapolitan pizza, but still good</h4>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eaque id recusandae voluptates, saepe doloremque similique
-                    odio maxime quod totam incidunt asperiores vitae repudiandae
-                    consequatur, hic quasi culpa! Rerum, velit sunt.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Doloremque, esse. Culpa repellat fuga repudiandae, officia
+                    iste ea molestias possimus inventore?
                   </p>
+                  <p class="author">- Ozzy Osborne</p>
                 </div>
-              </div>
-              <div class="opinion third">
-                <div class="slide">
+                <div class="carousel-cell">
                   <h4>Very tasty.</h4>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eaque id recusandae voluptates, saepe doloremque similique
-                    odio maxime quod totam incidunt asperiores vitae repudiandae
-                    consequatur, hic quasi culpa! Rerum, velit sunt.
+                    Beatae ea cumque nostrum illum quod molestiae quaerat,
+                    doloremque mollitia neque id!
                   </p>
+                  <p class="author">- Pizza Lover</p>
                 </div>
               </div>
             </div>
-            <div class="home-carousel-dots">
-              <i class="fas fa-circle"></i>
-              <i class="fas fa-circle"></i>
-              <i class="fas fa-circle"></i>
-            </div>
           </div>
+
           <div class="home-gallery-wrapper">
             <figure class="home-gallery-item">
               <img src="./images/assets/pizza-4.jpg" alt="" />
@@ -199,6 +195,7 @@
               </figcaption>
             </figure>
           </div>
+          <a class="instagram">View more on Instagram</a>
         </div>
       </section>
       <section id="order">
@@ -456,6 +453,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="vendor/range-slider.min.js"></script>
+    <script src="vendor/flickity.pkgd.min.js"></script>
     <script src="js/app.js" type="module"></script>
   </body>
 </html>
