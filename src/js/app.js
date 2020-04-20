@@ -130,6 +130,8 @@ const app = {
       contain: true,
       autoPlay: true,
       prevNextButtons: false,
+      fade: true,
+      wrapAround: true,
     });
   },
   /*
