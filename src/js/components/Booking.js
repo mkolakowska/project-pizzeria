@@ -241,7 +241,7 @@ class Booking {
         return response.json();
       })
       .then(function (parsedResponse) {
-        //('parsedResponse', parsedResponse);
+        console.log('parsedResponse', parsedResponse);
         thisBooking.makeBooked(
           payload.date,
           payload.hour,
