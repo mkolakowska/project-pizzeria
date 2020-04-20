@@ -188,6 +188,23 @@
         opacity: 0.4;
       }
     }
+
+    &.picked {
+      cursor: not-allowed;
+      color: lighten($color-dark, 70%);
+      border: 2px solid $color-light;
+
+      &::after {
+        position: absolute;
+        content: 'reserved';
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: $color-main;
+        opacity: 0.4;
+      }
+    }
   }
 
   [data-table='1'] {
