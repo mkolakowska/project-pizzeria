@@ -168,12 +168,11 @@ class Booking {
         !allAvailable &&
         thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableId)
       ) {
+        thisBooking.bookedTable = null;
+        table.classList.remove(classNames.booking.tablePicked);
         table.classList.add(classNames.booking.tableBooked);
       } else {
-        table.classList.remove(
-          classNames.booking.tableBooked,
-          classNames.booking.tablePicked
-        );
+        table.classList.remove(classNames.booking.tableBooked);
         //('table', table);
       }
       thisBooking.rangeSliderColour();
@@ -184,20 +183,25 @@ class Booking {
     const thisBooking = this;
 
     for (let table of thisBooking.dom.tables) {
-      table.addEventListener('click', function () {
-        console.log(table);
-        let tableId = table.getAttribute(settings.booking.tableIdAttribute);
+      let tableId = table.getAttribute(settings.booking.tableIdAttribute);
+      if (!isNaN(tableId)) {
+        tableId = parseInt(tableId);
         console.log(tableId);
+      }
+
+      table.addEventListener('click', function () {
         let bookedTable = table.classList.contains(
           classNames.booking.tableBooked
         );
         console.log(bookedTable);
-
         if (!bookedTable) {
-          table.classList.add(
-            classNames.booking.tableBooked,
-            classNames.booking.tablePicked
+          const activeTable = thisBooking.dom.wrapper.querySelector(
+            select.booking.tables + '.picked'
           );
+          console.log(activeTable);
+          if (activeTable)
+            activeTable.classList.remove(classNames.booking.tablePicked);
+          table.classList.add(classNames.booking.tablePicked);
           thisBooking.bookedTable = tableId;
         }
       });
